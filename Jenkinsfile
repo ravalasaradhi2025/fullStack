@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         AWS_REGION = "us-west-2"
-        ECR_REPO   = "123456789012.dkr.ecr.us-east-1.amazonaws.com/my-app"
+        ECR_REPO   = "109398616914.dkr.ecr.us-west-2.amazonaws.com/partha/fullstack"
         IMAGE_TAG  = "latest"
     }
 

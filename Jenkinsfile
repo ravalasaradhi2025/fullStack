@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout from GitHub') {
             steps {
-                git branch: 'main',
+                git branch: 'master',
                     url: 'https://github.com/ravalasaradhi2025/fullStack.git',
                     credentialsId: 'docker_git_id'
             }

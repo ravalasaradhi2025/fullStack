@@ -5,6 +5,7 @@ pipeline {
         AWS_REGION = "us-west-2"
         ECR_REPO   = "109398616914.dkr.ecr.us-west-2.amazonaws.com/partha/fullstack"
         IMAGE_TAG  = "latest"
+        CLUSTER_NAME = "education-eks-HIk6x4Ng"
     }
 
     stages {
@@ -38,5 +39,22 @@ pipeline {
                 sh "docker push $ECR_REPO:$IMAGE_TAG"
             }
         }
+        stage('Configure Kubeconfig') {
+            steps {
+                sh """
+                  aws eks --region $AWS_REGION update-kubeconfig --name $CLUSTER_NAME
+                """
+            }
+        }
+
+        stage('Deploy to EKS') {
+            steps {
+              sh """
+                        kubectl apply -f k8s/deployment.yaml
+                          kubectl rollout status deployment/nginx-deployment
+                        """
+                    }
+                }
     }
 }
+//sre_user

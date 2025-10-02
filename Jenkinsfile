@@ -50,7 +50,7 @@ pipeline {
         stage('Deploy to EKS') {
             steps {
               sh """
-                        kubectl apply -f k8s/deployment.yaml
+                        kubectl apply -f deployment.yaml
                           kubectl rollout status deployment/nginx-deployment
                         """
                     }

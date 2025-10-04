@@ -5,7 +5,7 @@ pipeline {
         AWS_REGION = "us-west-2"
         ECR_REPO   = "109398616914.dkr.ecr.us-west-2.amazonaws.com/partha/fullstack"
         IMAGE_TAG  = "latest"
-        CLUSTER_NAME = "education-eks-HIk6x4Ng"
+        CLUSTER_NAME = "education-eks-6neSTHHy"
     }
 
     stages {

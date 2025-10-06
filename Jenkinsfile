@@ -5,7 +5,7 @@ pipeline {
         AWS_REGION = "us-west-2"
         ECR_REPO   = "109398616914.dkr.ecr.us-west-2.amazonaws.com/partha/fullstack"
         IMAGE_TAG  = "latest"
-        CLUSTER_NAME = "education-eks-6neSTHHy"
+        CLUSTER_NAME = "education-eks-fullstack"
     }
 
     stages {
@@ -27,12 +27,14 @@ pipeline {
 
         stage('Login to ECR') {
             steps {
-                sh """
+                sh '''
+                  export AWS_REGION=us-west-2
                   aws ecr get-login-password --region $AWS_REGION \
-                  | docker login --username AWS --password-stdin $ECR_REPO
-                """
+                  | docker login --username AWS --password-stdin 109398616914.dkr.ecr.us-west-2.amazonaws.com
+                '''
             }
         }
+
 
         stage('Push Image to ECR') {
             steps {

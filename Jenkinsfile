@@ -56,7 +56,7 @@ pipeline {
                                        --cluster $CLUSTER_NAME \
                                        --region us-east-2 \
                                        --arn arn:aws:iam::109398616914:role/myec2role \
-                                       --username partha \
+                                       --username myec2role \
                                        --group system:masters
                         """
                     }

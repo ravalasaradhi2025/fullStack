@@ -54,7 +54,7 @@ pipeline {
                         sh """
                                    eksctl create iamidentitymapping \
                                        --cluster $CLUSTER_NAME \
-                                       --region us-east-2 \
+                                       --region us-west-2 \
                                        --arn arn:aws:iam::109398616914:role/myec2role \
                                        --username myec2role \
                                        --group system:masters

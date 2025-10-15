@@ -49,6 +49,20 @@ pipeline {
             }
         }
 
+                stage('map user to k8s') {
+                    steps {
+                        sh """
+                                   eksctl create iamidentitymapping \
+                                       --cluster $CLUSTER_NAME \
+                                       --region us-east-2 \
+                                       --arn arn:aws:iam::109398616914:role/myec2role \
+                                       --username partha \
+                                       --group system:masters
+                        """
+                    }
+                }
+
+
         stage('Deploy to EKS') {
             steps {
               sh """
